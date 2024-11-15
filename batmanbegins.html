@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Begins</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Batman Begins</h1>
+
+    <video controls>
+        <source src="https://b-g-eu-16.raffaellocdn.net:2223/v3-hls-playback/2af246bae4e0d217720d27dba17e4a0f4e8f550c693738169f21cf8cc72f2198e352e26e99193ebd3dce37463b7c7fcb03cf62d612a5ce6478f8358641810163051e62d71884a06e2e56cd30e254e664c079c26c739bb3e8e4f515fed2ebf2d86578984794577ce916673ccc2b51d28884ab7997fbbe65cd7774fdb88e087542461d472aa94fbf50891dd36d3638a85c9feddf4c4ce0588afa75849e26c357d3a4dd4565f537f3b7b820ae6237b1e712fa8f3162a6dca71d87d7ff5d0a83ef0b/1080/index.m3u8" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back to Movie List</button>
+
+</body>
+</html>
