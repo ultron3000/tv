@@ -146,7 +146,7 @@
 
     <!-- Search Box -->
     <div class="search-box">
-        <input type="text" placeholder="Search for a movie or show...">
+        <input type="text" id="searchInput" onkeyup="searchMovies()" placeholder="Search for a movie or show...">
     </div>
 
     <!-- Navigation -->
@@ -157,9 +157,9 @@
             Movies
         </div>
         <div id="movies-subsections" class="subsections">
-            <a href="marvel.html">Marvel Studios</a>
-            <a href="sony.html">Sony Pictures</a>
-            <a href="warner.html">Warner Bros. Pictures</a>
+            <a href="marvel.html" class="movie-item">Marvel Studios</a>
+            <a href="sony.html" class="movie-item">Sony Pictures</a>
+            <a href="warner.html" class="movie-item">Warner Bros. Pictures</a>
         </div>
 
         <!-- TV Shows Section -->
@@ -222,6 +222,25 @@
             } else {
                 subsections.style.display = "block";
             }
+        }
+
+        // Search Functionality: Filters the movies in the subsections
+        function searchMovies() {
+            var input, filter, subsections, movieItems, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toLowerCase();
+            subsections = document.querySelectorAll('.subsections');
+            movieItems = document.querySelectorAll('.movie-item');
+            
+            // Loop through subsections and hide/show movie items based on search
+            movieItems.forEach(function(item) {
+                txtValue = item.textContent || item.innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
         }
     </script>
 
