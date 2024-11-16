@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swat Kats: The Radical Squadron</title>
+    <style>
+        /* Include some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
+        }
+
+        .season {
+            margin-top: 20px;
+        }
+
+        .season h2 {
+            color: #ff6600;
+        }
+
+        .episode {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .episode:hover {
+            background-color: #444;
+        }
+
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+        }
+
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Swat Kats: The Radical Squadron</h1>
+
+    <!-- Season 1 -->
+    <div class="season">
+        <h2>Season 1</h2>
+        <div class="episode" onclick="window.location.href='video.html?season=1&episode=1'">
+            Episode 1: The Radical Squadron
+        </div>
+        <!-- Add more episodes here later -->
+    </div>
+
+    <!-- Season 2 -->
+    <div class="season">
+        <h2>Season 2</h2>
+        <div class="episode" onclick="window.location.href='video.html?season=2&episode=1'">
+            Episode 1: The Enemy Within
+        </div>
+        <!-- Add more episodes here later -->
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+</body>
+</html>
