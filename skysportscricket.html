@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Sports Cricket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sky Sports Cricket</h1>
+
+    <video controls>
+        <source src="https://nowsports.co.in/cric/stream.m3u8?id=24b2884a7a74d9e2beb23fcad8a99f56" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back to Movie List</button>
+
+</body>
+</html>
