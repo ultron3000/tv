@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elemental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Elemental</h1>
+
+    <video controls>
+        <source src="https://b-g-eu-13.raffaellocdn.net:2223/v3-hls-playback/fa70737f10c90fb9005bc60753a5b63cc58504583975167068e7e3923f789dcf8a0730a9efefae7749f75cad7614c6518031df66f15fb8322feaeeee27fcdd84bbbc7dda97f74103403ff43c6df8d32c93ac764b22186ef19056414f51ab46c0e3a5193a4e050f98f9667d7a6d02d83707cc9728e3407b3c84ea98da6b5326a7afce28ea6d77a0576d9f805aaad2a0a66ec0d31a0204ef5d5d86effdbdd948935ca5cc9747823d53cd812b726b31cf9b56ae5fe1dfcdf6b25aa03afcee228add/1080/index.m3u8" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back to Movie List</button>
+
+</body>
+</html>
