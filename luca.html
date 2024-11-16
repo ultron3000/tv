@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Iron Man</h1>
+
+    <video controls>
+        <source src="https://b-g-eu-4.raffaellocdn.net:2223/v3-hls-playback/fc9dfab070c4c8e7eb980a55a1a0e93a98a4f55c9604a0dc49c38e769e30a5a5adad1ae5aa71fffb601d56e5c56a17b683b2e8f2caf939ca8c841adeedcc286d5f0bce91c1ca169580313ed4f34513d2dee7a52ad21dc3bf9a4aa2b18eeadc90153cdfec145cc38d5e7feb6eec271237f5b716530b91dbc6dfefa30cfecdb2eb19bc1a571e2f9e39dda4b1d4b5f72341c1501a1c9a6357271a5592b0bfb59b93bcb0bc229ac07c6a9ba60e036a1e2b04e37f64a1b3d4bbcd8a1902387c6e54f8/1080/index.m3u8" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back to Movie List</button>
+
+</body>
+</html>
