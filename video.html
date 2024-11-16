@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Watch Swat Kats Episode</h1>
+
+    <video controls id="videoPlayer">
+        <source id="videoSource" type="application/x-mpegURL">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const season = urlParams.get('season');
+        const episode = urlParams.get('episode');
+
+        // Define HLS links for each episode
+        const hlsLinks = {
+            "1": {
+                "1": "https://t02.cizgifilmlerizle.com/getvid?evid=6WEXVY5eTLEFebP6cleAO1wB9yOkrqrq7S03ZMD3GkrX-1s-o76uv9oo1x5fnMzkBkm8pukcFPsdeO2zZ8csx4xNTEhf13icHj0iq9WPL5rYGBnkH4i_5w5m358iLXuBVFv1g7Iy6kK1GBMA4POW7gx8wBxgwlxMS1PS8G6YkJznEini3AjVOHx5VyjXyh_-yL1wredswGKydmMowjn_3bSbvhC4AKATEIiAcVXrU_uQuKOiig-BzUwwT07OsIhgWzB7jNBbcrVZ5b2WRgJ4_h2JYeAbeF4uO-dxcOdg-vPj7wh94BqrotUNJjEl0XDIQ1b57aJ5Mr0-U4KXb_n22gcj2GWfwMDxkqExeJol2EH2dWOkJ3BHg4DX1XP4r_uHNfBuq7cyi0Gt4e0xdL2pb-xn0qnLhlQCey_15KXsDiZPLp_6pMSpr47ngUp0JXrLxwgCRhEoyfekOof9fbteSMCdiDJExTtQeTuDH7eegGijJeJZ92ayrF2M3EnuCirPZvHwIb4AYC7OgLxb6pJtQw&json",
+                "2": "https://test-hls-link.com/swatkats/season1/episode2.m3u8",
+                "3": "https://test-hls-link.com/swatkats/season1/episode3.m3u8",
+                // Add all 13 episodes of Season 1 here
+                "13": "https://test-hls-link.com/swatkats/season1/episode13.m3u8"
+            },
+            "2": {
+                "1": "https://test-hls-link.com/swatkats/season2/episode1.m3u8",
+                "2": "https://test-hls-link.com/swatkats/season2/episode2.m3u8",
+                // Add all 12 episodes of Season 2 here
+                "12": "https://test-hls-link.com/swatkats/season2/episode12.m3u8"
+            },
+            "3": {
+                "1": "https://test-hls-link.com/swatkats/season3/episode1.m3u8"
+            }
+        };
+
+        const videoSource = document.getElementById("videoSource");
+        if (season && episode) {
+            const videoUrl = hlsLinks[season] && hlsLinks[season][episode];
+            if (videoUrl) {
+                videoSource.src = videoUrl;
+                document.getElementById("videoPlayer").load();
+            } else {
+                alert("Video not available.");
+            }
+        }
+    </script>
+
+</body>
+</html>
