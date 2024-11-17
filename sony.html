@@ -3,44 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sony Pictures Movies</title>
+    <title>Sony Movies</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
             text-align: center;
-            padding: 20px;
         }
+
+        h1 {
+            color: #FF6600;
+            font-size: 40px;
+            margin-top: 20px;
+            padding: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         .movie-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            list-style: none;
+            padding: 0;
         }
+
         .movie-item {
-            background-color: #ddd;
-            padding: 15px 30px;
-            width: 300px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            margin: 10px;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 20px;
         }
+
         .movie-item:hover {
-            background-color: #ccc;
+            background-color: #FF6600;
+            color: white;
+        }
+
+        .movie-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .movie-item a:hover {
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <h1>Sony Pictures Movies</h1>
+    <h1>Sony Movies</h1>
 
-    <div class="movie-list">
-        <a href="therundown.html" class="movie-item">The Rundown</a>
-    </div>
+    <!-- Movie List -->
+    <ul class="movie-list">
+        <li class="movie-item"><a href="sony-movie.html?title=Spider-Man%20Homecoming&videoUrl=https://dummy-hls-link16.m3u8">Spider-Man Homecoming</a></li>
+        <li class="movie-item"><a href="sony-movie.html?title=Jumanji%20Welcome%20to%20the%20Jungle&videoUrl=https://dummy-hls-link17.m3u8">Jumanji</a></li>
+        <li class="movie-item"><a href="sony-movie.html?title=The%20Equalizer&videoUrl=https://dummy-hls-link18.m3u8">The Equalizer</a></li>
+        <li class="movie-item"><a href="sony-movie.html?title=Venom&videoUrl=https://dummy-hls-link19.m3u8">Venom</a></li>
+        <li class="movie-item"><a href="sony-movie.html?title=Ghostbusters&videoUrl=https://dummy-hls-link20.m3u8">Ghostbusters</a></li>
+    </ul>
 
 </body>
 </html>
