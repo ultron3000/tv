@@ -46,4 +46,42 @@
             height: auto;
             margin-top: 20px;
             border-radius: 8px;
-       
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="movie-title">Loading...</h1>
+
+    <!-- Video Player -->
+    <video id="movie-player" controls>
+        <source id="movie-video" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get movie details from the URL
+        const movieTitle = getQueryParam('title');
+        const videoUrl = getQueryParam('videoUrl');
+
+        // Set the movie title and video source
+        document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
+        document.getElementById('movie-video').src = videoUrl;
+
+        // Play the video
+        const moviePlayer = document.getElementById('movie-player');
+        moviePlayer.load();
+        moviePlayer.play();
+    </script>
+
+</body>
+</html>
