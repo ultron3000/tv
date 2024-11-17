@@ -3,46 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixar</title>
+    <title>Sports Channels</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            text-align: center;
+            background-color: #f8f9fa;
             padding: 20px;
         }
-        .movie-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .movie-item {
-            background-color: #ddd;
-            padding: 15px 30px;
-            width: 300px;
+
+        h1 {
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
         }
-        .movie-item:hover {
-            background-color: #ccc;
+
+        .sport-channel {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sport-channel:hover {
+            background-color: #444;
+        }
+
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+        }
+
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .video-container.active {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h1>Pixar Movies</h1>
+    <h1>Sports Channels</h1>
 
-    <div class="movie-list">
-        <a href="luca.html" class="movie-item">Luca</a>
-        <a href="#" class="movie-item">Avengers: Endgame</a>
-        <a href="#" class="movie-item">Spider-Man: No Way Home</a>
+    <!-- List of Sport Channels (Dummy Names) -->
+    <div class="sport-channel" onclick="openChannel('hls-link-football-1')">Football Channel 1 - ESPN</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-football-2')">Football Channel 2 - Fox Sports</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-football-3')">Football Channel 3 - NBC Sports</div>
+
+    <div class="sport-channel" onclick="openChannel('hls-link-basketball-1')">Basketball Channel 1 - NBA TV</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-basketball-2')">Basketball Channel 2 - ESPN</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-basketball-3')">Basketball Channel 3 - Fox Sports</div>
+
+    <div class="sport-channel" onclick="openChannel('hls-link-baseball-1')">Baseball Channel 1 - MLB Network</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-baseball-2')">Baseball Channel 2 - ESPN</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-baseball-3')">Baseball Channel 3 - Fox Sports</div>
+
+    <div class="sport-channel" onclick="openChannel('hls-link-tennis-1')">Tennis Channel 1 - Eurosport</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-tennis-2')">Tennis Channel 2 - ESPN</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-tennis-3')">Tennis Channel 3 - Fox Sports</div>
+
+    <div class="sport-channel" onclick="openChannel('hls-link-cricket-1')">Cricket Channel 1 - Star Sports</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-cricket-2')">Cricket Channel 2 - ESPN Cricket</div>
+    <div class="sport-channel" onclick="openChannel('hls-link-cricket-3')">Cricket Channel 3 - Fox Sports Cricket</div>
+
+    <!-- Video Container (HLS Link Display) -->
+    <div class="video-container" id="video-container">
+        <h3>Now Playing:</h3>
+        <video id="video" width="100%" controls>
+            <source id="hls-video" type="application/x-mpegURL">
+            Your browser does not support the video tag.
+        </video>
     </div>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <script>
+        // Function to load and show the video of the selected channel
+        function openChannel(channelId) {
+            let hlsLink = '';
+            switch(channelId) {
+                case 'hls-link-football-1':
+                    hlsLink = 'https://example-hls-link-football1.com';  // Replace with actual link
+                    break;
+                case 'hls-link-football-2':
+                    hlsLink = 'https://example-hls-link-football2.com';  // Replace with actual link
+                    break;
+                case 'hls-link-football-3':
+                    hlsLink = 'https://example-hls-link-football3.com';  // Replace with actual link
+                    break;
+                case 'hls-link-basketball-1':
+                    hlsLink = 'https://example-hls-link-basketball1.com';  // Replace with actual link
+                    break;
+                case 'hls-link-basketball-2':
+                    hlsLink = 'https://example-hls-link-basketball2.com';  // Replace with actual link
+                    break;
+                case 'hls-link-basketball-3':
+                    hlsLink = 'https://example-hls-link-basketball3.com';  // Replace with actual link
+                    break;
+                case 'hls-link-baseball-1':
+                    hlsLink = 'https://example-hls-link-baseball1.com';  // Replace with actual link
+                    break;
+                case 'hls-link-baseball-2':
+                    hlsLink = 'https://example-hls-link-baseball2.com';  // Replace with actual link
+                    break;
+                case 'hls-link-baseball-3':
+                    hlsLink = 'https://example-hls-link-baseball3.com';  // Replace with actual link
+                    break;
+                case 'hls-link-tennis-1':
+                    hlsLink = 'https://example-hls-link-tennis1.com';  // Replace with actual link
+                    break;
+                case 'hls-link-tennis-2':
+                    hlsLink = 'https://example-hls-link-tennis2.com';  // Replace with actual link
+                    break;
+                case 'hls-link-tennis-3':
+                    hlsLink = 'https://example-hls-link-tennis3.com';  // Replace with actual link
+                    break;
+                case 'hls-link-cricket-1':
+                    hlsLink = 'https://example-hls-link-cricket1.com';  // Replace with actual link
+                    break;
+                case 'hls-link-cricket-2':
+                    hlsLink = 'https://example-hls-link-cricket2.com';  // Replace with actual link
+                    break;
+                case 'hls-link-cricket-3':
+                    hlsLink = 'https://example-hls-link-cricket3.com';  // Replace with actual link
+                    break;
+            }
+
+            // Set the HLS video source
+            const videoElement = document.getElementById('hls-video');
+            videoElement.src = hlsLink;
+
+            // Show the video container
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
