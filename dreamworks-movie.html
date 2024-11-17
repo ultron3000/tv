@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play DreamWorks Movie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6600;
+            font-size: 40px;
+            margin-top: 20px;
+            padding: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn {
+            background-color: #FF6600;
+            color: white;
+            padding: 15px 25px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+
+        video {
+            width: 80%;
+            max-width: 900px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="movie-title">Loading...</h1>
+
+    <!-- Video Player -->
+    <video id="movie-player" controls>
+        <source id="movie-video" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get movie details from the URL
+        const movieTitle = getQueryParam('title');
+        const videoUrl = getQueryParam('videoUrl');
+
+        // Set the movie title and video source
+        document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
+        document.getElementById('movie-video').src = videoUrl;
+
+        // Play the video
+        const moviePlayer = document.getElementById('movie-player');
+        moviePlayer.load();
+        moviePlayer.play();
+    </script>
+
+</body>
+</html>
