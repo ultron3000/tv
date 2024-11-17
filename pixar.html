@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixar</title>
+    <title>Pixar Movies</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
             padding: 20px;
         }
 
-        .sport-channel {
+        .movie {
             padding: 10px;
             background-color: #333;
             color: white;
@@ -27,7 +27,7 @@
             cursor: pointer;
         }
 
-        .sport-channel:hover {
+        .movie:hover {
             background-color: #444;
         }
 
@@ -63,26 +63,23 @@
 
     <h1>Pixar Movies</h1>
 
-    <!-- List of Sport Channels (Dummy Names) -->
-    <div class="sport-channel" onclick="openChannel('https://b-g-eu-8.raffaellocdn.net:2223/v3-hls-playback/fc9dfab070c4c8e7eb980a55a1a0e93a98a4f55c9604a0dc49c38e769e30a5a5adad1ae5aa71fffb601d56e5c56a17b683b2e8f2caf939ca8c841adeedcc286dafc4c0d3e88b5abfcc8a475c75ce2025c5127bbf6bb195ef7827db97ba3e9fa3ead2acfdda76f04f8c7b08658c071878b4e41cce65383b82fe20a0135c6eaac14e6b713de53af7619bda1b758dcd8884fefd8e9004a2b600dfc6ca35533ca46902af76bb6dc8ce68ce1c92fc30221ff3ac1831cb3a2d2d71770b1c7177cb8e58/1080/index.m3u8')">Luca</div>
-    <div class="sport-channel" onclick="openChannel('https://b-g-eu-16.raffaellocdn.net:2223/v3-hls-playback/4f0019865c56b6606d1369d845d80e955a54484dd2191914b5a96ac5cc0a444cd8453420405aa1f50507fac7e6d85b4504dbfd6dba9b220c5041ec7a827038e104ced6ab63f7b652a91469abdf98f0d8636bcbc41d52e8daf6bd64034c043d1cdebc327551aa23019be589d7211c2deaf66c8cb1a4dc140a1077e76357856eefefda0772c76e0b3a0c31ddc7fb313cf85d76fd0a1573a0b217ab4b4854d324ff57ab8569bad6e8abd9085fea218d6ee188359a8d3e24e9f496c6774a4a60b80e/1080/index.m3u8')">Inside Out</div>
-    <div class="sport-channel" onclick="openChannel('https://b-g-eu-12.raffaellocdn.net:2223/v3-hls-playback/3957f356e7dee4bb441da64ea0dd6606c9113065cdb4072de0e140ed3ddb3728433a5d47ea3f95385826a8551a48f6ff47e10b5f8efc56959c5a743750de1b2bac5f8d5e6475dc8c55ccd13ff4b9b8cbd87d2fef48534df4d3fb001c787b90d2e91da01f585724ae3e861ee811f45032c46b7d77b28f378e446bb30e4087858dbfeab862a74b7066aabaa42e92351de48c865428ee56d6e4e35c6a5be760ec6c7debcfedbd1be147eb6f5284bcf26fe7f6d66fefd6645f0429145b9d269c3da9/1080/index.m3u8')">Inside Out 2</div>
+    <!-- List of Pixar Movies with their HLS links -->
+    <div class="movie" onclick="openChannel('https://b-g-eu-8.raffaellocdn.net:2223/v3-hls-playback/fc9dfab070c4c8e7eb980a55a1a0e93a98a4f55c9604a0dc49c38e769e30a5a5adad1ae5aa71fffb601d56e5c56a17b683b2e8f2caf939ca8c841adeedcc286dafc4c0d3e88b5abfcc8a475c75ce2025c5127bbf6bb195ef7827db97ba3e9fa3ead2acfdda76f04f8c7b08658c071878b4e41cce65383b82fe20a0135c6eaac14e6b713de53af7619bda1b758dcd8884fefd8e9004a2b600dfc6ca35533ca46902af76bb6dc8ce68ce1c92fc30221ff3ac1831cb3a2d2d71770b1c7177cb8e58/1080/index.m3u8')">Luca</div>
+    <div class="movie" onclick="openChannel('https://b-g-eu-16.raffaellocdn.net:2223/v3-hls-playback/4f0019865c56b6606d1369d845d80e955a54484dd2191914b5a96ac5cc0a444cd8453420405aa1f50507fac7e6d85b4504dbfd6dba9b220c5041ec7a827038e104ced6ab63f7b652a91469abdf98f0d8636bcbc41d52e8daf6bd64034c043d1cdebc327551aa23019be589d7211c2deaf66c8cb1a4dc140a1077e76357856eefefda0772c76e0b3a0c31ddc7fb313cf85d76fd0a1573a0b217ab4b4854d324ff57ab8569bad6e8abd9085fea218d6ee188359a8d3e24e9f496c6774a4a60b80e/1080/index.m3u8')">Inside Out</div>
+    <div class="movie" onclick="openChannel('https://b-g-eu-12.raffaellocdn.net:2223/v3-hls-playback/3957f356e7dee4bb441da64ea0dd6606c9113065cdb4072de0e140ed3ddb3728433a5d47ea3f95385826a8551a48f6ff47e10b5f8efc56959c5a743750de1b2bac5f8d5e6475dc8c55ccd13ff4b9b8cbd87d2fef48534df4d3fb001c787b90d2e91da01f585724ae3e861ee811f45032c46b7d77b28f378e446bb30e4087858dbfeab862a74b7066aabaa42e92351de48c865428ee56d6e4e35c6a5be760ec6c7debcfedbd1be147eb6f5284bcf26fe7f6d66fefd6645f0429145b9d269c3da9/1080/index.m3u8')">Inside Out 2</div>
 
-    <div class="sport-channel" onclick="openChannel('hls-link-basketball-1')">Basketball Channel 1 - NBA TV</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-basketball-2')">Basketball Channel 2 - ESPN</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-basketball-3')">Basketball Channel 3 - Fox Sports</div>
-
-    <div class="sport-channel" onclick="openChannel('hls-link-baseball-1')">Baseball Channel 1 - MLB Network</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-baseball-2')">Baseball Channel 2 - ESPN</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-baseball-3')">Baseball Channel 3 - Fox Sports</div>
-
-    <div class="sport-channel" onclick="openChannel('hls-link-tennis-1')">Tennis Channel 1 - Eurosport</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-tennis-2')">Tennis Channel 2 - ESPN</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-tennis-3')">Tennis Channel 3 - Fox Sports</div>
-
-    <div class="sport-channel" onclick="openChannel('hls-link-cricket-1')">Cricket Channel 1 - Star Sports</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-cricket-2')">Cricket Channel 2 - ESPN Cricket</div>
-    <div class="sport-channel" onclick="openChannel('hls-link-cricket-3')">Cricket Channel 3 - Fox Sports Cricket</div>
+    <!-- More Pixar movies with HLS links -->
+    <div class="movie" onclick="openChannel('https://dummy-hls-link1.com')">Toy Story</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link2.com')">Finding Nemo</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link3.com')">Monsters, Inc.</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link4.com')">The Incredibles</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link5.com')">Cars</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link6.com')">Ratatouille</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link7.com')">Up</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link8.com')">WALL-E</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link9.com')">Brave</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link10.com')">Toy Story 3</div>
+    <div class="movie" onclick="openChannel('https://dummy-hls-link11.com')">Monsters University</div>
 
     <!-- Video Container (HLS Link Display) -->
     <div class="video-container" id="video-container">
@@ -97,60 +94,10 @@
     <button class="back-btn" onclick="window.history.back()">Back</button>
 
     <script>
-        // Function to load and show the video of the selected channel
+        // Function to load and show the video of the selected movie
         function openChannel(channelId) {
-            let hlsLink = '';
-            switch(channelId) {
-                case 'hls-link-football-1':
-                    hlsLink = 'https://example-hls-link-football1.com';  // Replace with actual link
-                    break;
-                case 'hls-link-football-2':
-                    hlsLink = 'https://example-hls-link-football2.com';  // Replace with actual link
-                    break;
-                case 'hls-link-football-3':
-                    hlsLink = 'https://example-hls-link-football3.com';  // Replace with actual link
-                    break;
-                case 'hls-link-basketball-1':
-                    hlsLink = 'https://example-hls-link-basketball1.com';  // Replace with actual link
-                    break;
-                case 'hls-link-basketball-2':
-                    hlsLink = 'https://example-hls-link-basketball2.com';  // Replace with actual link
-                    break;
-                case 'hls-link-basketball-3':
-                    hlsLink = 'https://example-hls-link-basketball3.com';  // Replace with actual link
-                    break;
-                case 'hls-link-baseball-1':
-                    hlsLink = 'https://example-hls-link-baseball1.com';  // Replace with actual link
-                    break;
-                case 'hls-link-baseball-2':
-                    hlsLink = 'https://example-hls-link-baseball2.com';  // Replace with actual link
-                    break;
-                case 'hls-link-baseball-3':
-                    hlsLink = 'https://example-hls-link-baseball3.com';  // Replace with actual link
-                    break;
-                case 'hls-link-tennis-1':
-                    hlsLink = 'https://example-hls-link-tennis1.com';  // Replace with actual link
-                    break;
-                case 'hls-link-tennis-2':
-                    hlsLink = 'https://example-hls-link-tennis2.com';  // Replace with actual link
-                    break;
-                case 'hls-link-tennis-3':
-                    hlsLink = 'https://example-hls-link-tennis3.com';  // Replace with actual link
-                    break;
-                case 'hls-link-cricket-1':
-                    hlsLink = 'https://example-hls-link-cricket1.com';  // Replace with actual link
-                    break;
-                case 'hls-link-cricket-2':
-                    hlsLink = 'https://example-hls-link-cricket2.com';  // Replace with actual link
-                    break;
-                case 'hls-link-cricket-3':
-                    hlsLink = 'https://example-hls-link-cricket3.com';  // Replace with actual link
-                    break;
-            }
-
-            // Set the HLS video source
             const videoElement = document.getElementById('hls-video');
-            videoElement.src = hlsLink;
+            videoElement.src = channelId;
 
             // Show the video container
             const videoContainer = document.getElementById('video-container');
