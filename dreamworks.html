@@ -3,34 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamWorks</title>
+    <title>DreamWorks Movies</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
             text-align: center;
-            padding: 20px;
         }
+
+        h1 {
+            color: #FF6600;
+            font-size: 40px;
+            margin-top: 20px;
+            padding: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         .movie-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            list-style: none;
+            padding: 0;
         }
+
         .movie-item {
-            background-color: #ddd;
-            padding: 15px 30px;
-            width: 300px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            margin: 10px;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 20px;
         }
+
         .movie-item:hover {
-            background-color: #ccc;
+            background-color: #FF6600;
+            color: white;
+        }
+
+        .movie-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .movie-item a:hover {
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -38,11 +64,14 @@
 
     <h1>DreamWorks Movies</h1>
 
-    <div class="movie-list">
-        <a href="thewildrobot.html" class="movie-item">The Wild Robot</a>
-        <a href="#" class="movie-item">Avengers: Endgame</a>
-        <a href="#" class="movie-item">Spider-Man: No Way Home</a>
-    </div>
+    <!-- Movie List -->
+    <ul class="movie-list">
+        <li class="movie-item"><a href="dreamworks-movie.html?title=Shrek&videoUrl=https://dummy-hls-link6.m3u8">Shrek</a></li>
+        <li class="movie-item"><a href="dreamworks-movie.html?title=How%20to%20Train%20Your%20Dragon&videoUrl=https://dummy-hls-link7.m3u8">How to Train Your Dragon</a></li>
+        <li class="movie-item"><a href="dreamworks-movie.html?title=Kung%20Fu%20Panda&videoUrl=https://dummy-hls-link8.m3u8">Kung Fu Panda</a></li>
+        <li class="movie-item"><a href="dreamworks-movie.html?title=Madagascar&videoUrl=https://dummy-hls-link9.m3u8">Madagascar</a></li>
+        <li class="movie-item"><a href="dreamworks-movie.html?title=The%20Croods&videoUrl=https://dummy-hls-link10.m3u8">The Croods</a></li>
+    </ul>
 
 </body>
 </html>
