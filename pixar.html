@@ -12,16 +12,17 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
             text-align: center;
         }
 
         h1 {
-            color: #ff6600;
-            font-size: 24px;
-            margin-bottom: 20px;
+            color: #FF6600;
+            font-size: 40px;
+            margin-top: 20px;
+            padding: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .movie-list {
@@ -33,14 +34,29 @@
             background-color: #333;
             color: white;
             padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
+            margin: 10px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 20px;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 20px;
         }
 
         .movie-item:hover {
-            background-color: #444;
+            background-color: #FF6600;
+            color: white;
+        }
+
+        .movie-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .movie-item a:hover {
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -53,7 +69,6 @@
         <li class="movie-item"><a href="pixar-movie.html?title=Luca&videoUrl=https://b-g-eu-8.raffaellocdn.net:2223/v3-hls-playback/fc9dfab070c4c8e7eb980a55a1a0e93a98a4f55c9604a0dc49c38e769e30a5a5adad1ae5aa71fffb601d56e5c56a17b683b2e8f2caf939ca8c841adeedcc286dafc4c0d3e88b5abfcc8a475c75ce2025c5127bbf6bb195ef7827db97ba3e9fa3ead2acfdda76f04f8c7b08658c071878b4e41cce65383b82fe20a0135c6eaac14e6b713de53af7619bda1b758dcd8884fefd8e9004a2b600dfc6ca35533ca46902af76bb6dc8ce68ce1c92fc30221ff3ac1831cb3a2d2d71770b1c7177cb8e58/1080/index.m3u8">Luca</a></li>
         <li class="movie-item"><a href="pixar-movie.html?title=Inside%20Out&videoUrl=https://b-g-eu-16.raffaellocdn.net:2223/v3-hls-playback/4f0019865c56b6606d1369d845d80e955a54484dd2191914b5a96ac5cc0a444cd8453420405aa1f50507fac7e6d85b4504dbfd6dba9b220c5041ec7a827038e104ced6ab63f7b652a91469abdf98f0d8636bcbc41d52e8daf6bd64034c043d1cdebc327551aa23019be589d7211c2deaf66c8cb1a4dc140a1077e76357856eefefda0772c76e0b3a0c31ddc7fb313cf85d76fd0a1573a0b217ab4b4854d324ff57ab8569bad6e8abd9085fea218d6ee188359a8d3e24e9f496c6774a4a60b80e/1080/index.m3u8">Inside Out</a></li>
         <li class="movie-item"><a href="pixar-movie.html?title=Inside%20Out%202&videoUrl=https://b-g-eu-12.raffaellocdn.net:2223/v3-hls-playback/3957f356e7dee4bb441da64ea0dd6606c9113065cdb4072de0e140ed3ddb3728433a5d47ea3f95385826a8551a48f6ff47e10b5f8efc56959c5a743750de1b2bac5f8d5e6475dc8c55ccd13ff4b9b8cbd87d2fef48534df4d3fb001c787b90d2e91da01f585724ae3e861ee811f45032c46b7d77b28f378e446bb30e4087858dbfeab862a74b7066aabaa42e92351de48c865428ee56d6e4e35c6a5be760ec6c7debcfedbd1be147eb6f5284bcf26fe7f6d66fefd6645f0429145b9d269c3da9/1080/index.m3u8">Inside Out 2</a></li>
-        <!-- Add more movies here as needed -->
     </ul>
 
 </body>
