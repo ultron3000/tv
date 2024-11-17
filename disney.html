@@ -3,34 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disney</title>
+    <title>Disney Movies</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
             text-align: center;
-            padding: 20px;
         }
+
+        h1 {
+            color: #FF6600;
+            font-size: 40px;
+            margin-top: 20px;
+            padding: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
         .movie-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            list-style: none;
+            padding: 0;
         }
+
         .movie-item {
-            background-color: #ddd;
-            padding: 15px 30px;
-            width: 300px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            margin: 10px;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 20px;
         }
+
         .movie-item:hover {
-            background-color: #ccc;
+            background-color: #FF6600;
+            color: white;
+        }
+
+        .movie-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .movie-item a:hover {
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -38,11 +64,14 @@
 
     <h1>Disney Movies</h1>
 
-    <div class="movie-list">
-        <a href="elemental.html" class="movie-item">Elemental</a>
-        <a href="#" class="movie-item">Avengers: Endgame</a>
-        <a href="#" class="movie-item">Spider-Man: No Way Home</a>
-    </div>
+    <!-- Movie List -->
+    <ul class="movie-list">
+        <li class="movie-item"><a href="disney-movie.html?title=Frozen&videoUrl=https://dummy-hls-link21.m3u8">Frozen</a></li>
+        <li class="movie-item"><a href="disney-movie.html?title=The%20Lion%20King&videoUrl=https://dummy-hls-link22.m3u8">The Lion King</a></li>
+        <li class="movie-item"><a href="disney-movie.html?title=Aladdin&videoUrl=https://dummy-hls-link23.m3u8">Aladdin</a></li>
+        <li class="movie-item"><a href="disney-movie.html?title=Toy%20Story&videoUrl=https://dummy-hls-link24.m3u8">Toy Story</a></li>
+        <li class="movie-item"><a href="disney-movie.html?title=Beauty%20and%20the%20Beast&videoUrl=https://dummy-hls-link25.m3u8">Beauty and the Beast</a></li>
+    </ul>
 
 </body>
 </html>
