@@ -85,27 +85,27 @@
         if (Hls.isSupported()) {
             // Initialize HLS.js
             var hls = new Hls();
-            
+
             // Load the HLS stream
             hls.loadSource(videoUrl);
             
             // Attach the HLS instance to the video element
             hls.attachMedia(video);
-            
-            // When the HLS manifest is loaded, start playing
+
+            // Play the video once the manifest is parsed
             hls.on(Hls.Events.MANIFEST_PARSED, function () {
                 video.play();
             });
 
-            // Handle HLS.js errors
-            hls.on(Hls.Events.ERROR, function(event, data) {
+            // Handle errors in HLS.js (loading issues, stream issues)
+            hls.on(Hls.Events.ERROR, function (event, data) {
                 console.error('HLS.js error:', data);
-                alert('There was an issue loading the video.');
+                alert('Error loading the video: ' + data.details);
             });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             // Fallback if HLS.js is not supported (for Safari)
             video.src = videoUrl;
-            video.addEventListener('loadedmetadata', function() {
+            video.addEventListener('loadedmetadata', function () {
                 video.play();
             });
         } else {
