@@ -80,33 +80,48 @@
 
         const video = document.getElementById('movie-player');
 
-        // Check if the browser supports HLS.js (modern browsers)
+        // Check if HLS.js is supported in this browser
         if (Hls.isSupported()) {
             const hls = new Hls();
 
-            // Load the HLS stream
+            // Attach error handling for HLS.js
+            hls.on(Hls.Events.ERROR, function(event, data) {
+                if (data.fatal) {
+                    console.error('HLS.js fatal error:', data);
+                    switch (data.fatal) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            alert('A network error occurred. Please check your internet connection.');
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            alert('An error occurred while loading the media.');
+                            break;
+                        case Hls.ErrorTypes.OTHER_ERROR:
+                            alert('An unknown error occurred.');
+                            break;
+                    }
+                }
+            });
+
+            // Load the HLS stream and attach it to the video element
             hls.loadSource(videoUrl);
             hls.attachMedia(video);
 
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                // Start the video once HLS has loaded the stream
+                // Start the video once HLS has successfully loaded the stream
                 video.play().catch(err => {
                     console.error("Error playing video:", err);
                 });
             });
 
-            hls.on(Hls.Events.ERROR, function(event, data) {
-                console.error("HLS.js error:", data);
-            });
-        } 
-        // If browser does not support HLS.js, use native support (Safari)
-        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Fallback for Safari (native support for HLS)
             video.src = videoUrl;
             video.play().catch(err => {
                 console.error("Error playing video:", err);
             });
         } else {
-            console.error("HLS is not supported on this device.");
+            // Inform the user that their browser doesn't support HLS
+            alert('Your browser does not support HLS playback.');
         }
     </script>
 
