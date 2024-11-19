@@ -55,12 +55,14 @@
 
     <!-- Video Player -->
     <video id="movie-player" controls>
-        <source id="movie-video" type="application/x-mpegURL">
         Your browser does not support the video tag.
     </video>
 
     <!-- Back Button -->
     <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <!-- HLS.js -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.4/dist/hls.min.js"></script>
 
     <script>
         // Function to get query parameters
@@ -73,14 +75,29 @@
         const movieTitle = getQueryParam('title');
         const videoUrl = getQueryParam('videoUrl');
 
-        // Set the movie title and video source
+        // Set the movie title
         document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
-        document.getElementById('movie-video').src = videoUrl;
 
-        // Play the video
-        const moviePlayer = document.getElementById('movie-player');
-        moviePlayer.load();
-        moviePlayer.play();
+        // Get video element and create an HLS instance
+        const video = document.getElementById('movie-player');
+
+        // Check if the browser supports HLS.js (modern browsers)
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(videoUrl); // Load HLS stream URL
+            hls.attachMedia(video);   // Attach HLS.js to video element
+
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                video.play();  // Start playing once the manifest is parsed
+            });
+        }
+        // If browser does not support HLS.js, use native support (for Safari)
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoUrl;
+            video.addEventListener('loadedmetadata', function() {
+                video.play();
+            });
+        }
     </script>
 
 </body>
