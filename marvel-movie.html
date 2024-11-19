@@ -65,40 +65,45 @@
     const movieTitle = getQueryParam('title');
     const videoUrl = getQueryParam('videoUrl');
 
-    // Set the movie title dynamically
-    document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
+    // Check if we have a valid movie title and video URL
+    if (movieTitle && videoUrl) {
+        // Set the movie title dynamically
+        document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
 
-    // Set up the video player
-    const video = document.getElementById('movie-player');
+        // Set up the video player
+        const video = document.getElementById('movie-player');
 
-    // Check if HLS.js is supported (for browsers that do not support HLS natively like Chrome and Firefox)
-    if (Hls.isSupported()) {
-        var hls = new Hls();
+        // Check if HLS.js is supported (for browsers that do not support HLS natively like Chrome and Firefox)
+        if (Hls.isSupported()) {
+            var hls = new Hls();
 
-        // Load the HLS stream
-        hls.loadSource(videoUrl);
+            // Load the HLS stream
+            hls.loadSource(videoUrl);
 
-        // Attach HLS instance to the video element
-        hls.attachMedia(video);
+            // Attach HLS instance to the video element
+            hls.attachMedia(video);
 
-        // Play the video once the manifest is parsed
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
-        });
+            // Play the video once the manifest is parsed
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
 
-        // Error handling for HLS.js
-        hls.on(Hls.Events.ERROR, function (event, data) {
-            console.error('HLS.js error:', data);
-            alert('Error loading the video: ' + data.details);
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Fallback for Safari, which supports HLS natively
-        video.src = videoUrl;
-        video.addEventListener('loadedmetadata', function () {
-            video.play();
-        });
+            // Error handling for HLS.js
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                console.error('HLS.js error:', data);
+                alert('Error loading the video: ' + data.details);
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Fallback for Safari, which supports HLS natively
+            video.src = videoUrl;
+            video.addEventListener('loadedmetadata', function () {
+                video.play();
+            });
+        } else {
+            alert("Your browser does not support HLS video playback.");
+        }
     } else {
-        alert("Your browser does not support HLS video playback.");
+        alert("Error: Missing title or video URL in the query parameters.");
     }
 </script>
 
