@@ -75,6 +75,9 @@
         const movieTitle = getQueryParam('title');
         const videoUrl = getQueryParam('videoUrl');
 
+        console.log("Movie Title: ", movieTitle);
+        console.log("Video URL: ", videoUrl);
+
         // Set the movie title
         document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
 
@@ -99,7 +102,7 @@
             // Error handling for HLS.js
             hls.on(Hls.Events.ERROR, function(event, data) {
                 console.error("HLS.js Error: ", data);
-                alert("An error occurred while loading the video stream.");
+                alert("An error occurred while loading the video stream. Check the console for more information.");
             });
 
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
