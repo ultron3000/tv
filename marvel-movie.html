@@ -84,12 +84,37 @@
         // Check if the browser supports HLS.js (modern browsers)
         if (Hls.isSupported()) {
             const hls = new Hls();
-            hls.loadSource(videoUrl); // Load HLS stream URL
-            hls.attachMedia(video);   // Attach HLS.js to video element
+
+            // HLS.js events for better troubleshooting
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                console.error('HLS.js error:', data);
+            });
 
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play();  // Start playing once the manifest is parsed
+                console.log('Manifest parsed');
             });
+
+            hls.on(Hls.Events.LEVEL_LOADED, function (event, data) {
+                console.log('Level loaded:', data.level);
+            });
+
+            hls.on(Hls.Events.FRAG_LOADED, function (event, data) {
+                console.log('Fragment loaded:', data.frag);
+            });
+
+            hls.on(Hls.Events.BUFFER_FLUSHED, function () {
+                console.log('Buffer flushed');
+            });
+
+            // Load HLS stream URL and attach to video
+            hls.loadSource(videoUrl);
+            hls.attachMedia(video);
+
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                // Start playing once the manifest is parsed
+                video.play();
+            });
+
         }
         // If browser does not support HLS.js, use native support (for Safari)
         else if (video.canPlayType('application/vnd.apple.mpegurl')) {
@@ -97,6 +122,8 @@
             video.addEventListener('loadedmetadata', function() {
                 video.play();
             });
+        } else {
+            console.error('HLS is not supported on this device.');
         }
     </script>
 
