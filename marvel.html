@@ -5,58 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Movies</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f1f1f1;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
         }
 
         h1 {
-            color: #FF6600;
-            font-size: 40px;
-            margin-top: 20px;
-            padding: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
         }
 
         .movie-list {
-            list-style: none;
-            padding: 0;
+            margin-top: 20px;
         }
 
-        .movie-item {
+        .movie {
+            padding: 10px;
             background-color: #333;
             color: white;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 20px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-            width: 45%;
-            margin-bottom: 20px;
         }
 
-        .movie-item:hover {
-            background-color: #FF6600;
-            color: white;
+        .movie:hover {
+            background-color: #444;
         }
 
-        .movie-item a {
+        .back-btn {
+            background-color: #ff6600;
             color: white;
-            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: block;
+            width: 100px;
+            margin: 20px auto;
         }
 
-        .movie-item a:hover {
-            color: white;
-            text-decoration: underline;
+        .back-btn:hover {
+            background-color: #e65c00;
         }
     </style>
 </head>
@@ -65,24 +59,26 @@
     <h1>Marvel Movies</h1>
 
     <!-- Movie List -->
-    <ul class="movie-list">
-        <li class="movie-item"><a href="marvel-movie.html?title=Iron%20Man&videoUrl=https://zeltroncloud66.pro/file2/BPTfd3XCOeolJ9a45Tf0dtiTKiAuxnNOzI9oMxrwaYrxofBc6+y70b0uc6iGZ5042e9aqN7rJL1GCy9smdqlyFhHT1QwMbwecQ918e0Ry5omDcVSV5dpipUQCUc9BGLmVzWVEsQwHNmevSD9DEXK+HSN3HSykqMAOaTGlj09e+4=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Iron Man</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Iron Man%202&videoUrl=https://traxvonlight80.xyz/file1/ARKZfnxaOmY57IrAmCTAW~ycFwtUu83Fv24bRSJXgdzLr6b7QMpqzCYBbcLDWViI5Xwru5E+PYlQgdAMv5LqLMLFrt2eGsKBabHgswNrIPYtG4Xt3xPElonwwZ2HCcocv06Z9tlkcPnzoFgSqxcngVDYgEuBRQfjQgdCZrOxROs=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Iron Man 2</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Iron Man%203&videoUrl=https://blornixcloud65.xyz/file1/eY+Kr5Q4ocQEy6U+Ss5E~FUpHuKRssl4I~GHp+rAEKgV9jZK0axxR56AZ0aTP0dnrmUdDumGFHKcg2H1gsdMl5TorYQHyV~zd5BGTU+YPyxuQPKA+d~k2rIimQR9pvX9BmZJFQDZDPAL1MNcxJyn6oij2LPYG3RV4Pkl3nHk9rw=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Iron Man 3</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Thor&videoUrl=https://xenlixwave72.pro/file1/J2kGLDBgZ59FLH0Kst55t+xcaUGQQW+662XwH5Hnk1qElhz+l6F8S+daCXaxxuC9itcDjozSiTGHeawWSCUWqk~NXRgW8QMWEBBgdLCaHevirLqqHL9YdZLBJlVqTL3CeKONkijB5DVb04OwlnYVVBu3TWvbQJ2zMDFh~srVjQg=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Thor</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Thor:%20The%20Dark%20World&videoUrl=https://zelvonstar19.pro/file1/jYkDqVzXPVuz1CUeCVPbHrhK9jILq0CcA9cSxzrGDw7OtuFZx9ueFY0iGqMl493dv8d9JGwyZ7c+mpbjXU7seH4oi~7c8Z+qONFlyQSu0IU~k0rLkS0w9Q1Xt7qvIKto+UnfRyHfWjb5Nm4VDBRyOBAMUniJcZ5t~D~OEQV~SWs=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Thor: The Dark World</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Thor:%20Ragnarok&videoUrl=https://jornexwave10.pro/file1/hYNd2pjYTxnWIzHvuEZsHSGVlbRgok0joP99nOu+okpQKl2BxAT0mEBI9luJh6DWRmg~yJZ7PdzdKBiFWQdtj8qQcrFfNmKyobXSJsJoU5rjBgtzZqfGt6sUyu~BCHu4ptzPkiq3t~usO9sxnQEMvS7zG7ea~TzLnf2ns59gKAY=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Thor: Ragnarok</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Thor:%20Love%20and%20Thunder&videoUrl=https://gralvixfire92.live/file1/bj8ipYu6~cypU00KqdNADXMgv~ryP0pZ07j5V+xRuwhoFO2NTXbVXK1OvlxQ+dPe~Ju6pOUIzzW1eAWiMzVXgYRAmgoM6P7XCWD69hvxqGrUw4ulsKsNIihx3htrznsYzgO6P1ORXi8v4m+ZAaAjIZmR9KqCoCZGBv~+eoCw098=/MTA4MA==/aW5kZXgubTN1OA==.m3u8">Thor: Love and Thunder</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Black%20Widow&videoUrl=https://dummy-hls-link3.m3u8">Black Widow</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Black%20Widow&videoUrl=https://dummy-hls-link3.m3u8">Black Widow</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Black%20Widow&videoUrl=https://dummy-hls-link3.m3u8">Black Widow</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Black%20Widow&videoUrl=https://dummy-hls-link3.m3u8">Black Widow</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Black%20Widow&videoUrl=https://dummy-hls-link3.m3u8">Black Widow</a></li>
+    <div class="movie-list">
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=1'">Movie 1: Iron Man</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=2'">Movie 2: Iron Man 2</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=3'">Movie 3: Iron Man 3</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=4'">Movie 4: Thor</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=5'">Movie 5: Thor: The Dark World</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Love and Thunder</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
+        <div class="movie" onclick="window.location.href='video-marvel.html?movie=6'">Movie 6: Thor: Ragnarok</div>
         
-        
-        <li class="movie-item"><a href="marvel-movie.html?title=Doctor%20Strange%202&videoUrl=https://dummy-hls-link4.m3u8">Doctor Strange 2</a></li>
-        <li class="movie-item"><a href="marvel-movie.html?title=Thor%20Love%20and%20Thunder&videoUrl=https://dummy-hls-link5.m3u8">Thor Love and Thunder</a></li>
-    </ul>
+        <!-- Add more movies here as needed -->
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back()">Back</button>
 
 </body>
 </html>
