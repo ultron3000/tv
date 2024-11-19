@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Watch Pixar Movie</h1>
+
+    <video controls id="videoPlayer">
+        <source id="videoSource" type="application/x-mpegURL">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <button class="back-btn" onclick="window.history.back()">Back</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const movie = urlParams.get('movie');
+
+        // Define HLS links for each movie (dummy links for now)
+        const hlsLinks = {
+            "1": "https://test-hls-link.com/pixar/toystory.m3u8",
+            "2": "https://test-hls-link.com/pixar/findingnemo.m3u8",
+            "3": "https://test-hls-link.com/pixar/theincredibles.m3u8",
+            "4": "https://test-hls-link.com/pixar/cars.m3u8",
+            "5": "https://test-hls-link.com/pixar/monstersinc.m3u8",
+            "6": "https://test-hls-link.com/pixar/up.m3u8",
+            "7": "https://test-hls-link.com/pixar/brave.m3u8",
+            "8": "https://test-hls-link.com/pixar/insideout.m3u8",
+            "9": "https://test-hls-link.com/pixar/coco.m3u8",
+            "10": "https://test-hls-link.com/pixar/soul.m3u8"
+        };
+
+        const videoSource = document.getElementById("videoSource");
+        if (movie) {
+            const videoUrl = hlsLinks[movie];
+            if (videoUrl) {
+                videoSource.src = videoUrl;
+                document.getElementById("videoPlayer").load();
+            } else {
+                alert("Movie not available.");
+            }
+        }
+    </script>
+
+</body>
+</html>
