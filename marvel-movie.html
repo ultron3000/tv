@@ -78,52 +78,35 @@
         // Set the movie title
         document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
 
-        // Get video element and create an HLS instance
         const video = document.getElementById('movie-player');
 
         // Check if the browser supports HLS.js (modern browsers)
         if (Hls.isSupported()) {
             const hls = new Hls();
 
-            // HLS.js events for better troubleshooting
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                console.error('HLS.js error:', data);
-            });
-
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                console.log('Manifest parsed');
-            });
-
-            hls.on(Hls.Events.LEVEL_LOADED, function (event, data) {
-                console.log('Level loaded:', data.level);
-            });
-
-            hls.on(Hls.Events.FRAG_LOADED, function (event, data) {
-                console.log('Fragment loaded:', data.frag);
-            });
-
-            hls.on(Hls.Events.BUFFER_FLUSHED, function () {
-                console.log('Buffer flushed');
-            });
-
-            // Load HLS stream URL and attach to video
+            // Load the HLS stream
             hls.loadSource(videoUrl);
             hls.attachMedia(video);
 
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                // Start playing once the manifest is parsed
-                video.play();
+                // Start the video once HLS has loaded the stream
+                video.play().catch(err => {
+                    console.error("Error playing video:", err);
+                });
             });
 
-        }
-        // If browser does not support HLS.js, use native support (for Safari)
+            hls.on(Hls.Events.ERROR, function(event, data) {
+                console.error("HLS.js error:", data);
+            });
+        } 
+        // If browser does not support HLS.js, use native support (Safari)
         else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = videoUrl;
-            video.addEventListener('loadedmetadata', function() {
-                video.play();
+            video.play().catch(err => {
+                console.error("Error playing video:", err);
             });
         } else {
-            console.error('HLS is not supported on this device.');
+            console.error("HLS is not supported on this device.");
         }
     </script>
 
