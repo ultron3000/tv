@@ -84,29 +84,38 @@
         if (Hls.isSupported()) {
             const hls = new Hls();
 
-            // Attach HLS stream to video player
+            // Load the source and attach it to the video player
             hls.loadSource(videoUrl);
             hls.attachMedia(video);
 
-            // Play video once the manifest is parsed
+            // Listen for HLS.js events
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                console.log("HLS Manifest Parsed. Video is ready to play.");
                 video.play().catch(err => {
-                    console.error("Error playing video:", err);
+                    console.error("Error attempting to play the video:", err);
                 });
+            });
+
+            // Error handling for HLS.js
+            hls.on(Hls.Events.ERROR, function(event, data) {
+                console.error("HLS.js Error: ", data);
+                alert("An error occurred while loading the video stream.");
             });
 
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             // Fallback for Safari (native support for HLS)
             video.src = videoUrl;
             video.addEventListener('loadedmetadata', function() {
+                console.log("Video metadata loaded. Playing video.");
                 video.play().catch(err => {
-                    console.error("Error playing video:", err);
+                    console.error("Error attempting to play the video:", err);
                 });
             });
         } else {
             // Inform the user that their browser doesn't support HLS
             alert('Your browser does not support HLS playback.');
         }
+
     </script>
 
 </body>
