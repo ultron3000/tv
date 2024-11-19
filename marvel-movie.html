@@ -54,16 +54,16 @@
     <h1 id="movie-title">Loading...</h1>
 
     <!-- Video Player -->
-    <video id="movie-player" controls preload="auto">
+    <video id="movie-player" controls>
+        <source id="movie-video" type="application/x-mpegURL">
         Your browser does not support the video tag.
     </video>
 
     <!-- Back Button -->
     <button class="back-btn" onclick="window.history.back()">Back</button>
 
-    <!-- HLS.js -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.4/dist/hls.min.js"></script>
-
+    <!-- HLS.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.5/hls.min.js"></script>
     <script>
         // Function to get query parameters
         function getQueryParam(param) {
@@ -75,48 +75,41 @@
         const movieTitle = getQueryParam('title');
         const videoUrl = getQueryParam('videoUrl');
 
-        console.log("Movie Title: ", movieTitle);
-        console.log("Video URL: ", videoUrl);
-
-        // Set the movie title
+        // Set the movie title dynamically
         document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
 
+        // Set up video player
         const video = document.getElementById('movie-player');
 
-        // Check if HLS.js is supported in this browser
+        // Check if HLS.js is supported
         if (Hls.isSupported()) {
-            const hls = new Hls();
-
-            // Load the source and attach it to the video player
+            // Initialize HLS.js
+            var hls = new Hls();
+            
+            // Load the HLS stream
             hls.loadSource(videoUrl);
+            
+            // Attach the HLS instance to the video element
             hls.attachMedia(video);
-
-            // Listen for HLS.js events
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                console.log("HLS Manifest Parsed. Video is ready to play.");
-                video.play().catch(err => {
-                    console.error("Error attempting to play the video:", err);
-                });
+            
+            // When the HLS manifest is loaded, start playing
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
             });
 
-            // Error handling for HLS.js
+            // Handle HLS.js errors
             hls.on(Hls.Events.ERROR, function(event, data) {
-                console.error("HLS.js Error: ", data);
-                alert("An error occurred while loading the video stream. Check the console for more information.");
+                console.error('HLS.js error:', data);
+                alert('There was an issue loading the video.');
             });
-
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Fallback for Safari (native support for HLS)
+            // Fallback if HLS.js is not supported (for Safari)
             video.src = videoUrl;
             video.addEventListener('loadedmetadata', function() {
-                console.log("Video metadata loaded. Playing video.");
-                video.play().catch(err => {
-                    console.error("Error attempting to play the video:", err);
-                });
+                video.play();
             });
         } else {
-            // Inform the user that their browser doesn't support HLS
-            alert('Your browser does not support HLS playback.');
+            alert("Your browser does not support HLS video playback.");
         }
 
     </script>
