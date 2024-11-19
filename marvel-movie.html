@@ -3,17 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Marvel Movie</title>
+    <title>Marvel Movie</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
             text-align: center;
         }
 
@@ -21,8 +14,13 @@
             color: #FF6600;
             font-size: 40px;
             margin-top: 20px;
-            padding: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            max-width: 900px;
+            margin-top: 20px;
         }
 
         .back-btn {
@@ -39,80 +37,70 @@
         .back-btn:hover {
             background-color: #e65c00;
         }
-
-        video {
-            width: 80%;
-            max-width: 900px;
-            height: auto;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
     </style>
 </head>
 <body>
 
-    <h1 id="movie-title">Loading...</h1>
+<h1 id="movie-title">Loading...</h1>
 
-    <!-- Video Player -->
-    <video id="movie-player" controls>
-        <source id="movie-video" type="application/x-mpegURL">
-        Your browser does not support the video tag.
-    </video>
+<!-- Video Player -->
+<video id="movie-player" controls>
+    <source id="movie-video" type="application/x-mpegURL">
+    Your browser does not support the video tag.
+</video>
 
-    <!-- Back Button -->
-    <button class="back-btn" onclick="window.history.back()">Back</button>
+<!-- Back Button -->
+<button class="back-btn" onclick="window.history.back()">Back</button>
 
-    <!-- HLS.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.5/hls.min.js"></script>
-    <script>
-        // Function to get query parameters
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+<!-- HLS.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.5/hls.min.js"></script>
+<script>
+    // Function to get query parameters
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
-        // Get movie details from the URL
-        const movieTitle = getQueryParam('title');
-        const videoUrl = getQueryParam('videoUrl');
+    // Get movie details from the URL
+    const movieTitle = getQueryParam('title');
+    const videoUrl = getQueryParam('videoUrl');
 
-        // Set the movie title dynamically
-        document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
+    // Set the movie title dynamically
+    document.getElementById('movie-title').textContent = "Now Playing: " + movieTitle;
 
-        // Set up video player
-        const video = document.getElementById('movie-player');
+    // Set up the video player
+    const video = document.getElementById('movie-player');
 
-        // Check if HLS.js is supported
-        if (Hls.isSupported()) {
-            // Initialize HLS.js
-            var hls = new Hls();
+    // Check if HLS.js is supported (for browsers that do not support HLS natively like Chrome and Firefox)
+    if (Hls.isSupported()) {
+        var hls = new Hls();
 
-            // Load the HLS stream
-            hls.loadSource(videoUrl);
-            
-            // Attach the HLS instance to the video element
-            hls.attachMedia(video);
+        // Load the HLS stream
+        hls.loadSource(videoUrl);
 
-            // Play the video once the manifest is parsed
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                video.play();
-            });
+        // Attach HLS instance to the video element
+        hls.attachMedia(video);
 
-            // Handle errors in HLS.js (loading issues, stream issues)
-            hls.on(Hls.Events.ERROR, function (event, data) {
-                console.error('HLS.js error:', data);
-                alert('Error loading the video: ' + data.details);
-            });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            // Fallback if HLS.js is not supported (for Safari)
-            video.src = videoUrl;
-            video.addEventListener('loadedmetadata', function () {
-                video.play();
-            });
-        } else {
-            alert("Your browser does not support HLS video playback.");
-        }
+        // Play the video once the manifest is parsed
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
 
-    </script>
+        // Error handling for HLS.js
+        hls.on(Hls.Events.ERROR, function (event, data) {
+            console.error('HLS.js error:', data);
+            alert('Error loading the video: ' + data.details);
+        });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari, which supports HLS natively
+        video.src = videoUrl;
+        video.addEventListener('loadedmetadata', function () {
+            video.play();
+        });
+    } else {
+        alert("Your browser does not support HLS video playback.");
+    }
+</script>
 
 </body>
 </html>
