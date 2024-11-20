@@ -45,39 +45,47 @@
     <button class="back-btn" onclick="window.history.back()">Back</button>
 
     <script>
+        // Get the query parameters from the URL
         const urlParams = new URLSearchParams(window.location.search);
-        const movie = urlParams.get('movie');
+        const movie = urlParams.get('movie'); // Get the 'movie' parameter from the URL
 
-        // Define HLS links for each movie (dummy links for now)
+        // Define HLS links for each movie
         const hlsLinks = {
             "1": "https://zelvonstar19.pro/file1/83fxGWzMIzTa81DPQoH7Fl77y0VTAjymE53gzg1ZjOS6KoUlXuyRzDieeugYcrENsY4yAwZtmkI3Nb8AsPrVF5o+ARcgdja9~s8pgPMJaloZfMzsLklu3Aez9hMExSm8~YG42U2DaEcmYcCGE2DPaJLukJkG9tuWJAYK18Klq6s=/MTA4MA==/aW5kZXgubTN1OA==.m3u8",
             "2": "https://traxvonlight80.xyz/file1/UsGyWVDk2WMSB3QjuScx1jKdNs6wQC0X6wEZVh9giXc16Bkk5xujrp~0wXih4h5CUntLhtBjbNKm7JCKN4O7B~jj40uviWzp4GLOJxBQnsGbII3GaT61zCH9z+WcxOC4QFNyVMXSt5YI8fALnWuUmMGeGDuQ1KTNr1bExyrV4Ec=/MTA4MA==/aW5kZXgubTN1OA==.m3u8",
             "3": "https://florvexlight23.xyz/file1/uwRhAO4mQ6hX8vetUIngVssQVdgNC2r2MCeBuF2yJtBfx3fiPjBPuZcqoYuB1GF+hMC9TWL~izsmh3~+y6rURwCcCMx~8wq1gH4i93rTNW47HmGV3no2Uuz1SD9XAF3PND7fzj4FXpReNNYSwliZwfsm8yjXlMfuI7MJvvI0D60=/MTA4MA==/aW5kZXgubTN1OA==.m3u8",
-            "4": "https://b-g-eu-1.raffaellocdn.net:2223/v3-hls-playback/f2ee78b7b024ff0383d1592d2b892328b22944a5875b367527a03f2bcf9ada4d48b6b4bc8c474c438261870790f0e4fd4fdda2cff0551f1ee875967640d3bd4ec054d0a9b812c91cdff5faeffa0827d2d01040f14b3eb4e1c4bd9c5a1d9cb0cf629978ce38817e3d83d8fa5ac151831f8baeaa3b46b8871358966eb3e41435b15b218dc744eeecf5a1196f28023e5f47a91ee35d4bf4a5bb21b2e3a7e393c0fa1cedba40d308d393d00953ea0531f14d4af51194f53a0436861c6eef15ca68f1/1080/index.m3u8",
+            "4": "https://b-g-eu-1.raffaellocdn.net:2223/v3-hls-playback/f2ee78b7b024ff0383d1592d2b892328b22944a5875b367527a03f2bcf9ada4d48a6b4bc8c474c438261870790f0e4fd4fdda2cff0551f1ee875967640d3bd4ec054d0a9b812c91cdff5faeffa0827d2d01040f14b3eb4e1c4bd9c5a1d9cb0cf629978ce38817e3d83d8fa5ac151831f8baeaa3b46b8871358966eb3e41435b15b218dc744eeecf5a1196f28023e5f47a91ee35d4bf4a5bb21b2e3a7e393c0fa1cedba40d308d393d00953ea0531f14d4af51194f53a0436861c6eef15ca68f1/1080/index.m3u8",
             "5": "https://b-g-eu-5.raffaellocdn.net:2223/v3-hls-playback/e47b30be2c864d5266fe1c24bbfeb3d6938af921d2fb1f62d3eb80108627148691c06900793491c92bf4ef5d3fe6aeaa405a186eef278085e7a9c857aa1217bf62d9f6e20f34addd9cfe0b36eea8d706b4d4444dd4e0f66eee6a769e2e5e0765dc89bcaa505bb86cb94de625fa1c932da052991764372ae9341b42046fe9586af626ac2714fbc2b0186c4b6723a8f1b4fe29c5d741506f9f30b0eadc76aca0862a6c3760d320354df192225932ea807a3c265850a7a2e8d6051e60e358dc65a0/1080/index.m3u8",
             "6": "https://b-g-eu-13.raffaellocdn.net:2223/v3-hls-playback/d7cc67d12df60ff8bc1193d2f9366875d7134dd2f61957de902d8e638ab18935a5f2bffa30a023ba4dcd406087971fafbb4f08d34a349f4152fcd40f20a356be82052edffb1d11fbf8b82059be62278ffb90ad092460c4a4590e9a7a77b1a284b4624be948664fdb657fcf5f31194747b609c08e8d23b5b695478298028d3ce62345bfb7d8dbb21078ec7db4bc6869543a72f21183ae0d48414720a2c6ac02b1e7fe9396a2f0273347bdd473efad1af8f99386fdfe2808e8e1a6bba56b0ef7ef/1080/index.m3u8",
-            "7": "https://b-g-eu-11.raffaellocdn.net:2223/v3-hls-playback/b05f9166a474983dfaab6242796788bbcfd89f17d7dfafe32e7f923fe08b04a993144d57cd5472ac90f5308ac5f16736257afb23ac97fd6901a862d0d18b678903ef4796cbcb8dc3b5357591750d7524dff33e98245e9af8ffcd925a178874b0fcebaceae474932a1258e082f9f59d8f8cff32886db4e6231ee48c712d5e0f1f5f6d67dcc8156ccfe638dfdad0ec354680f2cd7258978a06f5e77b025359da7b091ff8536a5cff94a797fe6c11e588165eb637666f1d6c964e141ef63a641513/1080/index.m3u8",
-            "8": "https://b-g-eu-2.raffaellocdn.net:2223/v3-hls-playback/4f0019865c56b6606d1369d845d80e955a54484dd2191914b5a96ac5cc0a444cd8453420405aa1f50507fac7e6d85b4504dbfd6dba9b220c5041ec7a827038e1c07b76591968ad75266b28dadd733dc92bd80a82577c3da84cd0a6176863889abce873e309ed99cbfc2f61e6d7a8d9084ba821c601890569166c4952bf507ab77839631fc878a128f7b725e1937b80852dcf2949ddcb981f0a4e19d7a910bcf01a8fed4592218bb508449c93e2f758f526116df1f705afb042fc9adad4b447cc/1080/index.m3u8",
-            "9": "https://gralvixfire92.live/file1/OVfzVufe5LtEHaZOoN1mBskRMGXNtAct4OFA7T3bNyhDOl1H6j+VOFgmqFUaSPb~x7sh4olGCgz5z762mUvM1aXMfeaeX7cOuhc8rWipJuzwvGOkAoBFI6AMF7eOGFgGFHWEf5J+LVIAQweT0cmiYjbgxrxq+XbTqq3dgYR5p7Q=/MTA4MA==/aW5kZXgubTN1OA==.m3u8",
-            "10": "https://florvexlight23.xyz/file1/+nBzfxDJD7kAW8YHU6W2PMWFBFg5dRZwaOfjkj94nc+KBzCp7++ud0n3XK12FMZRuwN418uznJwK+8uITi3owaMvsyjrNFirI77BKQGWpnsIv6HslE+Kf3+CnqSz~e7Grw8NyGZN0TB7yWgfP3xRnf0cr0~3umykFmiyEl82Erk=/MTA4MA==/aW5kZXgubTN1OA==.m3u8"
-            "11": "https://b-g-eu-20.raffaellocdn.net:2223/v3-hls-playback/c3f1a91d0f0c29132259dbc4bd6151c85e5371311dfba0bbc85be677838e9be248a1cc6da621bfe79adde29375b83ab4772ae07d5aa65b0bb79040ab1ace95e1cd17d78e246b072ca557e0e3220c0ce639548b56e822d8bf3d7a3c3e38915c88de052dc9b133919c1a1b85314ea6eeb734a6fa8dbe9f8b420c6fb3ad34c7662f1297de1bba9721bd8e23965ba1ca88cf5e7dad629ea567e7c7ab1f426e0d3b42a0bf9f3a6950b08991614fa2ee2302f7911bbe439ebddd296f4cdcfb1b0c73a0/1080/index.m3u8"
-            "12": "https://morvaxwave16.xyz/file1/V9qdrIfWlBCe4IxwxUR3jklRzIQ2SfvhB+lL9BblfNgCMI+WydnLa0P0YSNUHghgulGI7AUWy~Yb9WJFKkSfE3HB766cXuioSanKFXJbU2qXJwEjozNpynQrLYd0u9zE3KCCleJEmpWVzRAxtpFQNGODPdUASWr49nLngEQobjY=/MTA4MA==/aW5kZXgubTN1OA==.m3u8"
-            "13": "https://xenlixwave72.pro/file1/~J36sHDEyOfrmApVoaDpOpik9VyWBKDcScOOdp4wpaWtrRrlqnH~+2AdVuXFahe2E4zTX4odkOY7WcOdsZwB8gzoI3HxY46uwQPLm8UDPhbznh8fdnW+fK2K3Yj9NE0wCaFSbjmDHtsMpRczIUp8qZl6QNqEajEN~5hSNecSbbk=/MTA4MA==/aW5kZXgubTN1OA==.m3u8"
-            "14": "https://test-hls-link.com/pixar/soul.m3u8"
-            "15": "https://test-hls-link.com/pixar/soul.m3u8"
+            "7": "https://b-g-eu-11.raffaellocdn.net:2223/v3-hls-playback/b05f9166a474983dfaab6242796788bbcfd89f17d7dfafe32e7f923fe08b04a993144d57cd5472ac90f5308ac5f16736257afb23ac97fd6901a862d0d18b678903ef4796cbcb8dc3b5357591750d7524dff33e98245e9af8ffcd925a178874b0fcebaceae474932a1258e082f9f59d8f8cff32886db4e6231ee48c712d5e0f1f5f6d67dcc8156ccfe638dfdad0ec354680f2cd7258978a06f5e77b025359da7b091ff8536a5cff94a797fe6c11e588e240be88b01f3f96/1080/index.m3u8",
+            "8": "https://your-new-link-for-movie-8.m3u8",
+            "9": "https://your-new-link-for-movie-9.m3u8",
+            "10": "https://your-new-link-for-movie-10.m3u8"
         };
 
-        const videoSource = document.getElementById("videoSource");
-        if (movie) {
-            const videoUrl = hlsLinks[movie];
-            if (videoUrl) {
-                videoSource.src = videoUrl;
-                document.getElementById("videoPlayer").load();
-            } else {
-                alert("Movie not available.");
-            }
+        // Get the HLS stream URL for the selected movie
+        const videoElement = document.getElementById('videoPlayer');
+        const videoSource = document.getElementById('videoSource');
+
+        if (movie && hlsLinks[movie]) {
+            videoSource.src = hlsLinks[movie]; // Set the source for the video
+            videoElement.load(); // Reload the video element with the new source
+        } else {
+            alert("Movie not found.");
+        }
+
+        // Fallback for browsers that do not support HLS.js
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(hlsLinks[movie]);
+            hls.attachMedia(videoElement);
+        } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+            // Native HLS support in some browsers (like Safari)
+            videoSource.type = 'application/x-mpegURL';
+            videoElement.load();
         }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </body>
 </html>
